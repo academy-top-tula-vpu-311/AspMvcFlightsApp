@@ -1,0 +1,21 @@
+﻿@model AspMvcFlightsApp.Models.CityData
+
+<h2>Новый город</h2>
+<form method="post"
+      asp-route="dashboard"
+      asp-route-controller="City"
+      asp-route-action="Create">
+
+      <div class="mb-3">
+          <label asp-for="Title" 
+                 class="form-label">Название: </label>
+          <input asp-for="Title"
+                 class="form-control"/>
+          <span asp-validation-for="Title" />
+      </div>
+      <div class="mb-3">
+          <button type="submit"
+                  class="btn btn-success">Сохранить</button>
+      </div>
+
+</form>

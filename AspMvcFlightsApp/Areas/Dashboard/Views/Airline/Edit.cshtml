@@ -1,0 +1,51 @@
+﻿@model AspMvcFlightsApp.Models.AirlineData
+
+<h2>Редактирование авиалинии</h2>
+
+<form method="post"
+      asp-route="dashboard"
+      asp-route-controller="Airline"
+      asp-route-action="Edit"
+      enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label asp-for="Title"
+               class="form-label">Название: </label>
+        <input asp-for="Title"
+               class="form-control" />
+        <span asp-validation-for="Title" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CityId"
+               class="form-label">Город: </label>
+        <select asp-for="CityId" class="form-select">
+            @foreach (CityData city in ViewBag.Cities)
+            {
+                if (Model.CityId == city.Id)
+                {
+                    <option value="@city.Id" selected>@city.Title</option>
+                }
+                else
+                {
+                    <option value="@city.Id">@city.Title</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Logo"
+               class="form-label">Логотип: </label>
+        <img src="@Model.Logo" height="100" />
+        <input asp-for="Logo" type="file" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <button type="submit"
+                class="btn btn-success">
+            Сохранить
+        </button>
+    </div>
+
+</form>

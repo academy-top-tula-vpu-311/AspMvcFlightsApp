@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using AspMvcFlightsApp.Models;
 
 namespace AspMvcFlightsApp.Models
 {

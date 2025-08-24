@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AspMvcFlightsApp.Models.CityData>?
+
+<h2>Панель управления городами</h2>
+
+<div>
+    <a class="btn btn-secondary"
+       asp-route="dashboard"
+       asp-route-controller="Home"
+       asp-route-action="Index">
+        Вернуться на главную страницу
+    </a>
+
+    <a class="btn btn-primary"
+       asp-route="dashboard"
+       asp-route-controller="City"
+       asp-route-action="Create">
+   Добавить новый город
+   </a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model is not null)
+        {
+            @foreach(var city in Model)
+            {
+                <tr>
+                    <td>@city.Title</td>
+                    <td>
+                        <a class="btn btn-secondary"
+                           asp-route="dashboard"
+                           asp-route-controller="City"
+                           asp-route-action="Edit"
+                           asp-route-id="@city.Id">
+                           Редактировать
+                        </a>
+                    </td>
+                    <td>
+                        <form method="post"
+                              asp-route="dashboard"
+                              asp-route-controller="City"
+                              asp-route-action="Delete"
+                              asp-route-id="@city.Id">
+                              <button type="submit"
+                                      class="btn btn-danger">
+                                      Удалить
+                              </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

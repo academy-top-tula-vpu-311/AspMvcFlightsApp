@@ -1,7 +1,27 @@
-﻿<h2>Dashboard</h2>
+﻿<h2>Панель управления контентом</h2>
 
-<a 
-    class="btn btn-primary btn-lg">
-    Управление городами
-</a>
+<div class="mb-3">
+    <a asp-route="dashboard"
+       asp-route-controller="City"
+       class="btn btn-primary btn-lg">
+        Управление городами
+    </a>
+</div>
+
+<div class="mb-3">
+    <a asp-route="dashboard"
+       asp-route-controller="Airport"
+       class="btn btn-primary btn-lg">
+        Управление аэропортами
+    </a>
+</div>
+
+<div class="mb-3">
+    <a asp-route="dashboard"
+       asp-route-controller="Airline"
+       asp-route-action="Index"
+       class="btn btn-primary btn-lg">
+        Управление авиалиниями
+    </a>
+</div>
  

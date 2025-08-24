@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AspMvcFlightsApp.Models.AirlineData>?
+
+<h2>Панель управления авиалиниями</h2>
+
+<div>
+    <a class="btn btn-secondary"
+       asp-route="dashboard"
+       asp-route-controller="Home"
+       asp-route-action="Index">
+        Вернуться на главную страницу
+    </a>
+
+    <a class="btn btn-primary"
+       asp-route="dashboard"
+       asp-route-controller="Airline"
+       asp-route-action="Create">
+        Добавить новую авиалинию
+    </a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Логотип</th>
+            <th>Название</th>
+            <th>Город</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model is not null)
+        {
+            @foreach (var airline in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@airline.Logo" />
+                    </td>
+                    <td>@airline?.Title</td>
+                    <td>@airline?.City?.Title</td>
+                    <td>
+                        <a class="btn btn-secondary"
+                           asp-route="dashboard"
+                           asp-route-controller="Airline"
+                           asp-route-action="Edit"
+                           asp-route-id="@airline?.Id">
+                            Редактировать
+                        </a>
+                    </td>
+                    <td>
+                        <form method="post"
+                              asp-route="dashboard"
+                              asp-route-controller="Airline"
+                              asp-route-action="Delete"
+                              asp-route-id="@airline?.Id">
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
